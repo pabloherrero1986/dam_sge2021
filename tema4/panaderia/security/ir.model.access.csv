@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+categoria_responsable,categoria responsable,model_panaderia_categoria,panaderia_manager,1,1,1,1
+pan_responsable,pan responsable,model_panaderia_pan,panaderia_manager,1,1,1,1

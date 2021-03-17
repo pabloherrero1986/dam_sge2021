@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <report
+      id="libreria.report_libro"
+      model="libreria.libro"
+      string="Informe libro"
+      name="libreria.report_libro_view"
+      file="libreria.report_libro_view"
+      report_type="qweb-pdf"/>
+
+      <template id="report_libro_view">
+        <t t-call="web.html_container">
+          <t t-foreach="docs" t-as="libro">
+            <t t-call="web.external_layout">
+              <div class="page">
+                <h2 t-field="libro.name"/>
+                <div>
+                  <strong>Precio:</strong>
+                  <span t-field="libro.precio"/>
+                </div>
+                <div>
+                  <strong>Ejemplares:</strong>
+                  <span t-field="libro.ejemplares"/>
+                </div>
+                <div>
+                  <strong>Categoría:</strong>
+                  <span t-field="libro.categoria"/>
+                </div>
+              </div>
+            </t>
+          </t>
+        </t>
+      </template>
+  </data>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+    <record model="panaderia.categoria">
+      <field name="name">Barras</field>
+    </record>
+    <record model="panaderia.categoria">
+      <field name="name">Empanadas</field>
+    </record>
+  </data>
+</odoo>

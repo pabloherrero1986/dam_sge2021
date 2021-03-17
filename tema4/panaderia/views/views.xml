@@ -1,0 +1,161 @@
+<odoo>
+  <data>
+
+    <!-- Vista categoría -->
+    <record model="ir.ui.view" id="panaderia.categoria_tree">
+      <field name="name">panaderia.categoria.tree</field>
+      <field name="model">panaderia.categoria</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="panaderia.categoria_form">
+      <field name="name">panaderia.categoria.form</field>
+      <field name="model">panaderia.categoria</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name"/>
+            <field name="description"/>
+            <field name="panes">
+              <tree>
+                <field name="name"/>
+                <field name="precio"/>
+                <field name="ejemplares"/>
+              </tree>
+            </field>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista pan -->
+    <record model="ir.ui.view" id="panaderia.pan_tree">
+      <field name="name">panaderia.pan.tree</field>
+      <field name="model">panaderia.pan</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="precio"/>
+          <field name="ejemplares"/>
+          <field name="importetotal"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="panaderia.pan_form">
+      <field name="name">panaderia.pan.form</field>
+      <field name="model">panaderia.pan</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name"/>
+            <field name="precio"/>
+            <field name="ejemplares"/>
+            <field name="fecha"/>
+            <field name="segmano"/>
+            <field name="estado"/>
+            <field name="categoria"/>
+            <field name="importetotal"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Búsqueda pan -->
+    <record model="ir.ui.view" id="panaderia.pan_search_view">
+      <field name="name">panaderia.pan.search</field>
+      <field name="model">panaderia.pan</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name" string="Variedad"/>
+          <field name="categoria" string="Categoría"/>
+          <filter name="baratos" domain="[('precio','&lt;',35)]"/>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- Acciones de ventana -->
+       <record model="ir.actions.act_window" id="panaderia.categoria_action_window">
+         <field name="name">panaderia.categoria.action_window</field>
+         <field name="res_model">panaderia.categoria</field>
+         <field name="view_mode">tree,form</field>
+       </record>
+
+       <record model="ir.actions.act_window" id="panaderia.pan_action_window">
+         <field name="name">panaderia.pan.action_window</field>
+         <field name="res_model">panaderia.pan</field>
+         <field name="view_mode">tree,form</field>
+       </record>
+
+    <!-- Elementos de menú -->
+   <menuitem name="Panaderia" id="panaderia.menu_root" groups="panaderia_manager"/>
+
+   <menuitem name="Categorías" id="panaderia.categoria_menu" parent="panaderia.menu_root" groups="panaderia_manager" action="panaderia.categoria_action_window"/>
+   <menuitem name="Panes" id="panaderia.pan_menu" parent="panaderia.menu_root" groups="panaderia_manager" action="panaderia.pan_action_window"/>
+
+
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="panaderia.list">
+      <field name="name">panaderia list</field>
+      <field name="model">panaderia.panaderia</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="panaderia.action_window">
+      <field name="name">panaderia window</field>
+      <field name="res_model">panaderia.panaderia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="panaderia.action_server">
+      <field name="name">panaderia server</field>
+      <field name="model_id" ref="model_panaderia_panaderia"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="panaderia" id="panaderia.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="panaderia.menu_1" parent="panaderia.menu_root"/>
+    <menuitem name="Menu 2" id="panaderia.menu_2" parent="panaderia.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="panaderia.menu_1_list" parent="panaderia.menu_1"
+              action="panaderia.action_window"/>
+    <menuitem name="Server to list" id="panaderia" parent="panaderia.menu_2"
+              action="panaderia.action_server"/>
+-->
+  </data>
+</odoo>

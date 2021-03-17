@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <report
+      id="panaderia.report_pan"
+      model="panaderia.pan"
+      string="Informe pan"
+      name="panaderia.report_pan_view"
+      file="panaderia.report_pan_view"
+      report_type="qweb-pdf"/>
+
+      <template id="report_pan_view">
+        <t t-call="web.html_container">
+          <t t-foreach="docs" t-as="pan">
+            <t t-call="web.external_layout">
+              <div class="page">
+                <h2 t-field="pan.name"/>
+                <div>
+                  <strong>Precio:</strong>
+                  <span t-field="pan.precio"/>
+                </div>
+                <div>
+                  <strong>Ejemplares:</strong>
+                  <span t-field="pan.ejemplares"/>
+                </div>
+                <div>
+                  <strong>Categoría:</strong>
+                  <span t-field="pan.categoria"/>
+                </div>
+              </div>
+            </t>
+          </t>
+        </t>
+      </template>
+  </data>
+</odoo>
